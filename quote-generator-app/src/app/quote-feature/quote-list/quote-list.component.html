@@ -1,0 +1,41 @@
+<div class="list row">
+    <div class="col-md-6">
+      <h4>Quotes List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let quote of quotes; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveQuote(quote, i)"
+        >
+          {{ quote.authorname }}
+        </li>
+      </ul>
+  
+      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllQuotes()">
+        Remove All
+      </button> -->
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentQuote.id">
+        <h4>Quote</h4>
+        <div>
+          <label><strong>Author:</strong></label> {{ currentQuote.authorname }}
+        </div>
+        <div>
+          <label><strong>Quote:</strong></label>
+          {{ currentQuote.text }}
+        </div>
+    
+        <a class="badge badge-warning" routerLink="/quotes/{{ currentQuote.id }}">
+          Editer
+        </a>
+        
+      </div>
+  
+      <div *ngIf="!currentQuote">
+        <br />
+        <p>Please click on a Quote...</p>
+      </div>
+    </div>
+  </div>

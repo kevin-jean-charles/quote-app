@@ -1,0 +1,36 @@
+<a href="#" class="btn btn-danger btn-lg active" [routerLink]="[ '/user' ]" role="button" aria-pressed="true">Retour</a>
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="text">Citation</label>
+          <input
+            type="text"
+            class="form-control"
+            id="text"
+            required
+            [(ngModel)]="quote.text"
+            name="text"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="authorname">Nom d'auteur</label>
+          <input
+            class="form-control"
+            id="authorname"
+            required
+            [(ngModel)]="quote.authorname"
+            name="authorname"
+          />
+        </div>
+  
+        <button (click)="saveQuote()" class="btn btn-success">Envoyé</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>La citation a été envoyé avec succès!</h4>
+        <button class="btn btn-success" (click)="newQuote()">Ajouter</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,11 @@
+<div class="container">
+        <h2>Generateur de citation</h2>
+        <p>Appuyer sur le bouton pour obtenir un citation aléatoire</p>
+        <button class="btn btn-primary" (click)="getQuoteAtRand()"> Générer </button>
+        <div *ngIf="randQuote">
+            <blockquote>
+                {{randQuote.text}}
+            </blockquote>
+            <p class="authorname"> {{randQuote.authorname}}</p>
+    </div>
+</div>

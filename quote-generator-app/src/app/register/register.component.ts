@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
       data => {
         console.log(data);
         this.isSuccessful = true;
+      
         this.isSignUpFailed = false;
       },
       err => {

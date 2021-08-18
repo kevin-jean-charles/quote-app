@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-  QUOTE_API_URL: "http://localhost:8080/api/quotes",
-  TEST_API_URL: 'http://localhost:8080/api/test',
-  AUTH_API_URL: 'http://localhost:8080/api/auth',
+  BASE_API_URL: "http://localhost:8080/api/v1",
 };
 
 /*

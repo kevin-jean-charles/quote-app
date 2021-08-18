@@ -12,27 +12,27 @@ export class QuoteService {
   constructor(private httpClient : HttpClient) { }
 
   getQuoteAtRandom(): Observable<Quote> {
-    return this.httpClient.get<Quote>(`${environment.QUOTE_API_URL}/random`);
+    return this.httpClient.get<Quote>(`${environment.BASE_API_URL}/randomquotes`);
   }
 
   create(data: any, id: any): Observable<any> {
-    return this.httpClient.post(`${environment.QUOTE_API_URL}/users/${id}`, data);
+    return this.httpClient.post(`${environment.BASE_API_URL}/users/${id}`, data);
   }
 
   getAllQuoteByUser(id: any): Observable<any> {
-    return this.httpClient.get(`${environment.QUOTE_API_URL}/users/${id}`)
+    return this.httpClient.get(`${environment.BASE_API_URL}/users/${id}`)
   }
 
   delete(userId: any, quoteId: any): Observable<any> {
-    return this.httpClient.delete(`${environment.QUOTE_API_URL}/users/${userId}/delete/${quoteId}`)
+    return this.httpClient.delete(`${environment.BASE_API_URL}/users/${userId}/delete/${quoteId}`)
   }
 
   getQuoteById(userId: any){
-    return this.httpClient.get(`${environment.QUOTE_API_URL}/${userId}`)
+    return this.httpClient.get(`${environment.BASE_API_URL}/${userId}`)
   }
 
   updateQuote(userId:any, data:any) {
-    return this.httpClient.put(`${environment.QUOTE_API_URL}/users/${userId}`, data)
+    return this.httpClient.put(`${environment.BASE_API_URL}/users/${userId}`, data)
   }
 }
 

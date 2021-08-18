@@ -5,9 +5,13 @@ import com.kcode.quoteapp.entity.RegisterRequest;
 import com.kcode.quoteapp.service.CustomUserDetailsService;
 import com.kcode.quoteapp.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,20 +32,23 @@ public class AuthController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity generateToken(@RequestBody AuthRequest authRequest) throws Exception {
-        try {
-            authenticationManager.authenticate(
+    public ResponseEntity generateToken(@RequestBody AuthRequest authRequest) {
+
+        Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
-        } catch (Exception ex) {
-            throw new Exception("inavalid username/password");
-        }
-        return ResponseEntity.ok( jwtUtil.generateToken(authRequest.getUsername()));
+        System.out.println(authentication);
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt =jwtUtil.generateToken(userDetails.getUsername());
+
+
+        return ResponseEntity.ok(jwt);
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> saveUser(@RequestBody RegisterRequest registerRequest) throws Exception {
         userDetailsService.saveUser(registerRequest);
-        return ResponseEntity.ok("user register");
+        return new ResponseEntity<>( HttpStatus.CREATED);
     }
 }

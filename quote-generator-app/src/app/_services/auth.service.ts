@@ -13,11 +13,10 @@ const httpOptions = {
 
 export class AuthService {
 
-
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(`${environment.AUTH_API_URL}/signin`, {
+    return this.http.post(`${environment.BASE_API_URL}/auth/authenticate`, {
       username,
       password
     }, httpOptions);
@@ -25,7 +24,7 @@ export class AuthService {
 
   
   register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${environment.AUTH_API_URL}/signup`, {
+    return this.http.post(`${environment.BASE_API_URL}/auth/register`, {
       username,
       email,
       password

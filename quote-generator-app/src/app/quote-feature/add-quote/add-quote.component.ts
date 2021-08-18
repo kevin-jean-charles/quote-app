@@ -14,7 +14,7 @@ export class AddQuoteComponent implements OnInit {
   quote: Quote = {
     id: -1,
     authorname: "",
-    text: "",
+    content: "",
   };
   submitted = false;
 
@@ -34,7 +34,7 @@ export class AddQuoteComponent implements OnInit {
     this.initUser();
     const data = {
       
-      text: this.quote.text,
+      text: this.quote.content,
       authorname: this.quote.authorname
     };
 
@@ -54,7 +54,7 @@ export class AddQuoteComponent implements OnInit {
     this.submitted = false;
     this.quote = {
       id: -1,
-      text: '',
+      content: '',
       authorname: '',
     };
   }

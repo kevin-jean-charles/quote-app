@@ -23,15 +23,18 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    //log ok
+    
     if (this.tokenStorage.getToken()) {
       console.log("this.tokenStorage.getToken()" + this.tokenStorage.getToken());
       
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
     }
   }
 
   onSubmit(): void {
+    console.log("ok");
+      
     const { username, password } = this.form;
 
     this.authService.login(username, password).subscribe(
@@ -52,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   reloadPage(): void {
-    window.location.reload();
+    localStorage.reload();
   }
 
 }

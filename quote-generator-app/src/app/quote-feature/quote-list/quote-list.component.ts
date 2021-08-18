@@ -15,7 +15,7 @@ export class QuoteListComponent implements OnInit {
   currentQuote: Quote = {
     id:0,
     authorname: "",
-    text: ""
+    content: ""
   };
   currentIndex = -1;
   title = '';
@@ -49,7 +49,7 @@ export class QuoteListComponent implements OnInit {
   refreshList(): void {
     this.retrieveQuotes();
     this.currentQuote.authorname = "",
-    this.currentQuote.text = ""
+    this.currentQuote.content = ""
     this.currentIndex = -1;
     }
 

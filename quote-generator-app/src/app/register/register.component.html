@@ -5,13 +5,7 @@
         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         class="profile-img-card"
       />
-      <form
-        *ngIf="!isSuccessful"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
-      >
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="username">Username</label>
           <input
@@ -60,13 +54,13 @@
             name="password"
             [(ngModel)]="form.password"
             required
-            minlength="6"
+            minlength="4"
             #password="ngModel"
           />
           <div class="alert-danger" *ngIf="password.errors && f.submitted">
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
+              Password must be at least 4 characters
             </div>
           </div>
         </div>

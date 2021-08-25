@@ -1,0 +1,30 @@
+<h4>Quotes List</h4>
+
+<button type="button" [routerLink]="[ '/add' ]" class="btn btn-primary">Add Quote</button>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"> Author</th>
+        <th scope="col">Quote</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let quote of quoteList; let i = index" 
+        [class.active]="i == currentIndex"
+        (click)="setCurrentQuote(i, quote)"
+        >
+        <th scope="row"> {{ quote.id }} </th>
+        <td> {{ quote.author }} </td>
+        <td> {{ quote.content }} </td>
+        <td> 
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" [routerLink]="[ '/view' ]" class="btn btn-info">View</button>
+                <button type="button" [routerLink]="[ '/update' ]" class="btn btn-warning " onclick="">Update</button>
+                <button type="button" [routerLink]="[ '/delete' ]" class="btn btn-danger">Delete</button>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
